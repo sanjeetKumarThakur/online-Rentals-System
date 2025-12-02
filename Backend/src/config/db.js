@@ -13,7 +13,7 @@ const connectDB = async () => {
       await mongoose.connect(mongoURI, {
         // recommended options can be passed here, mongoose 6+ uses defaults
       });
-      console.log(`MongoDB connected to ${mongoURI}`);
+      console.log(`MongoDB connected `);
       return;
     } catch (error) {
       console.error(`MongoDB connection attempt ${attempt}/${retries} failed:`, error.message || error);
