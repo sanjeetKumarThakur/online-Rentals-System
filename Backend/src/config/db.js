@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
 
 const connectDB = async () => {
-  const mongoURI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/rentalsdb';
+  // prefer MONGO_URI, but support MONGODB_URI env name if used elsewhere
+  const mongoURI = process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/rentalsdb';
   const retries = parseInt(process.env.DB_CONNECT_RETRIES || '5', 10);
   const delayMs = parseInt(process.env.DB_CONNECT_RETRY_DELAY_MS || '2000', 10);
 
